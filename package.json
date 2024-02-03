@@ -1,0 +1,18 @@
+{
+  "name": "getuser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy-lambda": "zip -r getUser-lambda.zip index.js node_modules && aws lambda create-function --function-name getUserFunction --runtime nodejs20.x --role arn:aws:iam::661566115886:role/LambdaExecutionRole --handler getUserFunction.handler --zip-file fileb://./getUser-lambda.zip",
+    "update-lambda": "zip -r getUser-lambda.zip index.js node_modules && aws lambda update-function-code --function-name getUserFunction --zip-file fileb://./getUser-lambda.zip"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.506.0",
+    "@aws-sdk/util-dynamodb": "^3.506.0"
+  }
+}
